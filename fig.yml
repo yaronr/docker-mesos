@@ -1,0 +1,37 @@
+zookeeper:
+  image: mesos
+  ports: 
+    - "49181:2181"
+  command: /usr/share/zookeeper/bin/zkServer.sh start-foreground
+master:
+  build: mesos-master
+  ports:
+    - "15050:5050"
+  links:
+    - zookeeper:zookeeper
+slave:
+  build: mesos-slave
+  links:
+    - zookeeper:zookeeper
+chronos:
+  build: mesos-chronos
+  ports:
+    - "14400:4400"
+  links:
+    - zookeeper:zookeeper
+nimbus:
+  build: mesos-storm
+  ports:
+    - "49773:3773"
+    - "49772:3772"
+    - "49627:6627"
+  links:
+    - zookeeper:zookeeper
+  command: /storm-mesos-0.9/bin/storm-mesos nimbus
+stormui:
+  build: mesos-storm
+  ports:
+    - "49080:8080"
+  links:
+    - nimbus:nimbus
+  command: /storm-mesos-0.9/bin/storm ui
