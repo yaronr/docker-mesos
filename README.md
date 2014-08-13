@@ -38,6 +38,7 @@ If you're using boot2docker, to find out your docker host's IP, run <br/>$> boot
 ##TODO:
 * Centralized monitoring? [Ganglia?](http://ganglia.sourceforge.net/)
 * [Centralized logging?](http://jasonwilder.com/blog/2012/01/03/centralized-logging/)  [Flume?](https://cwiki.apache.org/confluence/display/FLUME/Home%3bjsessionid=DE02EE9AD41DCFE2E244B6C03FF36B06)
+* Process supervision [monit](http://mmonit.com/monit/documentation/monit.html)?
 * 
 
 
