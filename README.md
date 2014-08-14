@@ -32,7 +32,8 @@ If you're using boot2docker, to find out your docker host's IP, run <br/>$> boot
 
 
 ###Known issues:
-* Chronos doesn't work
+* On Mac, using boot2docker, Chronos and Marathon fail. Chronos (and probably Marathon) fail because it tries to increase the number of open file descriptors and is not allowed to. Trying to [resolve](http://stackoverflow.com/questions/25307991/increase-boot2docker-ulimit-n). Let me know if you have a fix
+
 
 
 ##TODO:
