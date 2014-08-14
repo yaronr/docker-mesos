@@ -19,12 +19,12 @@ chronos:
     - "14400:4400"
   links:
     - zookeeper:zookeeper
-marathon:
-  build: mesos-marathon
-  ports:
-    - "18080:8080"
-  links:
-    - zookeeper:zookeeper
+#marathon:
+#  build: mesos-marathon
+#  ports:
+#    - "18080:8080"
+#  links:
+#    - zookeeper:zookeeper
 nimbus:
   build: mesos-storm
   ports:
