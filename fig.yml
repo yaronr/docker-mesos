@@ -33,7 +33,6 @@ nimbus:
     - "49627:6627"
   links:
     - zookeeper:zookeeper
-  command: /storm-mesos-0.9/bin/storm-mesos nimbus
 stormui:
   build: mesos-storm
   ports:
