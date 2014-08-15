@@ -9,6 +9,7 @@ master:
     - "15050:5050"
   links:
     - zookeeper:zookeeper
+    - slave:slave
 slave:
   build: mesos-slave
   links:

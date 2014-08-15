@@ -1,6 +1,6 @@
 FROM mesos
-MAINTAINER Mark O'Connor <mark@myspotontheweb.com>
+MAINTAINER yaronr
 
-CMD ["--master=zk://zookeeper:2181/mesos"]
+CMD ["--master=zk://zookeeper:2181/mesos", "--log_dir=/var/log/mesos"]
 
 ENTRYPOINT ["mesos-slave"]

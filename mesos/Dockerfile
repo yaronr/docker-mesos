@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
-MAINTAINER Yaron Rosenbaum <yaron.rosenbaum@gmail.com>
+MAINTAINER yaronr
 
 RUN echo "deb http://repos.mesosphere.io/ubuntu/ trusty main" > /etc/apt/sources.list.d/mesosphere.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF

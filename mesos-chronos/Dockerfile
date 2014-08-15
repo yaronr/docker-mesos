@@ -1,5 +1,5 @@
 FROM mesos
-MAINTAINER Yaron Rosenbaum <yaron.rosenbaum@gmail.com>
+MAINTAINER yaronr
 
 RUN echo "zk://zookeeper:2181/mesos" > /etc/mesos/zk
 

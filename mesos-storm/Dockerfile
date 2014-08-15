@@ -1,6 +1,6 @@
 FROM mesos
 
-MAINTAINER Yaron Rosenbaum <yaron.rosenbaum@gmail.com>
+MAINTAINER yaronr
 
 RUN wget -q -N http://downloads.mesosphere.io/storm/storm-mesos-0.9.tgz && \
  tar xzf ./storm-mesos-0.9.tgz && \
@@ -13,5 +13,12 @@ ADD supervisord.conf /etc/supervisor/supervisord.conf
 #ENTRYPOINT ["/storm-mesos-0.9/bin/storm-mesos"]
 
 ADD storm.yaml /storm-mesos-0.9/conf/storm.yaml
+ADD cluster.xml /storm-mesos-0.9/logback/cluster.xml
 
 CMD ["supervisord"]
+
+
+#apt-get install git maven
+#cd /usr/share
+#git clone https://github.com/mesos/storm.git
+
