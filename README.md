@@ -9,7 +9,7 @@ I decided to build this setup in order to be able to work with Mesos and its fra
 
 The first setup that I found, that actually worked, was [vagrant-mesos](https://github.com/everpeace/vagrant-mesos). However, I quickly realized that my laptop can't carry the weight of so many VMs.
 
-Next, I searched for a Docker.io based setup: Docker offers a more elegant - and resource efficient approach, plus - it potentially offers a scenario where developers use the exact same setup in development and in production (Dev-Ops). That carries a lot of weight.
+Next, I searched for a Docker.io based setup (but couldn't find one): Docker offers a more elegant - and resource efficient approach, plus - it potentially offers a scenario where developers use the exact same setup in development and in production (Dev-Ops). That carries a lot of weight.
 
 This work is inspired by [storm-docker](https://github.com/wurstmeister/storm-docker), the wonderful work of wurstmeiser - a clean and elegant Docker based Apache Storm setup.
 
@@ -28,19 +28,39 @@ To open up the Mesos UI, open http://<your docker host's IP>:15050
 
 To open up the Storm UI, open http://<your docker host's IP>:49080
 
+Chronos UI: open http://<your docker host's IP>:14400
+
 If you're using boot2docker, to find out your docker host's IP, run <br/>$> boot2docker ip
 
 
-###Known issues:
-* On Mac, using boot2docker, Chronos and Marathon fail. Chronos (and probably Marathon) fail because it tries to increase the number of open file descriptors and is not allowed to. Trying to [resolve](http://stackoverflow.com/questions/25307991/increase-boot2docker-ulimit-n). Let me know if you have a fix
+###Known issues & Workarounds:
+* When using boot2docker (on mac, probably other platforms as well), Chronos and / or Marathon fail,  trying to increase the number of open file descriptors.
+This is solved in [boot2docker 1.2 pull 166](https://github.com/boot2docker/boot2docker/pull/466)<br/>Until 1.2 is officially released, the workaround is to [build](https://github.com/boot2docker/boot2docker/blob/master/doc/BUILD.md) boot2docker from the main branch, where this issue is resolved.
+
+
+```
+$> git clone git@github.com:boot2docker/boot2docker.git
+..
+$> cd boot2docker
+$> docker build -t boot2docker . && docker run --rm boot2docker > boot2docker.iso
+# takes a really long time..
+$> boot2docker down
+$> mv ~/.boot2docker/boot2docker.iso ~/.boot2docker/boot2docker.iso_old
+$> cp ./boot2docker.iso  ~/.boot2docker/boot2docker.iso
+$> boot2docker up
+$> boot2docker ssh
+docker@boot2docker:~$ ulimit -n 8192
+docker@boot2docker:~$ exit
+```
 
 
 
 ##TODO:
 * Centralized monitoring? [Ganglia?](http://ganglia.sourceforge.net/)
 * [Centralized logging?](http://jasonwilder.com/blog/2012/01/03/centralized-logging/)  [Flume?](https://cwiki.apache.org/confluence/display/FLUME/Home%3bjsessionid=DE02EE9AD41DCFE2E244B6C03FF36B06)
-* Process supervision [monit](http://mmonit.com/monit/documentation/monit.html)?
-* 
+* Process supervision
+* drive mapping for logging
+* store images at hub.boot2docker.com + auto build
 
 
 ##PS
