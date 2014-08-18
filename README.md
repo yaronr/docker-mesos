@@ -30,6 +30,8 @@ To open up the Storm UI, open http://<your docker host's IP>:49080
 
 Chronos UI: open http://<your docker host's IP>:14400
 
+Marathon UI: open http://<your docker host's IP>:18080
+
 If you're using boot2docker, to find out your docker host's IP, run <br/>$> boot2docker ip
 
 
@@ -58,7 +60,7 @@ docker@boot2docker:~$ exit
 ##TODO:
 * Centralized monitoring? [Ganglia?](http://ganglia.sourceforge.net/)
 * [Centralized logging?](http://jasonwilder.com/blog/2012/01/03/centralized-logging/)  [Flume?](https://cwiki.apache.org/confluence/display/FLUME/Home%3bjsessionid=DE02EE9AD41DCFE2E244B6C03FF36B06)
-* Process supervision
+* Process supervision for zookeeper?
 * drive mapping for logging
 * store images at hub.boot2docker.com + auto build
 
