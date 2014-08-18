@@ -24,13 +24,13 @@ I decided to take this solution forward and share it with the community - hopefu
 * ./build.sh
 * fig up
 
-To open up the Mesos UI, open http://<your docker host's IP>:15050
+To open up the Mesos UI, open http://your docker host's IP:15050
 
-To open up the Storm UI, open http://<your docker host's IP>:49080
+To open up the Storm UI, open http://your docker host's IP:49080
 
-Chronos UI: open http://<your docker host's IP>:14400
+Chronos UI: open http://your docker host's IP:14400
 
-Marathon UI: open http://<your docker host's IP>:18080
+Marathon UI: open http://your docker host's IP:18080
 
 If you're using boot2docker, to find out your docker host's IP, run <br/>$> boot2docker ip
 
