@@ -3,7 +3,8 @@ mesos.master.url: "zk://zookeeper:2181/mesos"
 storm.zookeeper.servers:
     - "zookeeper"
 
-nimbus.host: "nimbus"
+nimbus.host: "master"
+#nimbus.host: "nimbus"
 
 
 # -----------------------------------------------------------
