@@ -5,6 +5,7 @@ zookeeper:
   command: /usr/share/zookeeper/bin/zkServer.sh start-foreground
 master:
   build: mesos-master
+  hostname: master
   ports:
     - "15050:5050"
     - "49773:3773"
@@ -12,24 +13,28 @@ master:
     - "49627:6627"
     - "14400:4400"
     - "18080:8080"
+    - "19080:8772" 
+#storm ui is using port 8772 as per storm.yaml
   links:
     - zookeeper:zookeeper
-    - slave:slave
+#    - slave:slave
 slave:
   build: mesos-slave
-  ports:
+#  hostname: slave
+#  ports:
+#    - "6700"
+#    - "6701"
+#    - "6702" 
+#    - "6703"
+  expose:
     - "6700"
     - "6701"
     - "6702" 
     - "6703"
+    - "8000"
+    - "3100"
+    - "3101"
+    - "5051"
   links:
     - zookeeper:zookeeper
-#    - master:master
-stormui:
-  build: mesos-master
-  ports:
-    - "49080:8080"
-  links:
     - master:master
-    - slave:slave
-  command: /storm-mesos-0.9/bin/storm ui
