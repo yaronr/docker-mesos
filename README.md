@@ -36,26 +36,15 @@ If you're using boot2docker, to find out your docker host's IP, run <br/>$> boot
 
 
 ###Known issues & Workarounds:
-* When using boot2docker (on mac, probably other platforms as well), Chronos and / or Marathon fail,  trying to increase the number of open file descriptors.
-This is solved in [boot2docker 1.2 pull 166](https://github.com/boot2docker/boot2docker/pull/466)<br/>Until 1.2 is officially released, the workaround is to [build](https://github.com/boot2docker/boot2docker/blob/master/doc/BUILD.md) boot2docker from the main branch, where this issue is resolved.
-
+* Storm fails to run topologies. UI works, you can submit, but executors seem to die silently. Working on it, appreciate help if you have the time.
+* When using boot2docker versions older than 1.2 (on mac, probably other platforms as well), Chronos and / or Marathon fail,  trying to increase the number of open file descriptors.
+This is solved in [boot2docker 1.2 pull 166](https://github.com/boot2docker/boot2docker/pull/466) so please do:
 
 ```
-$> git clone git@github.com:boot2docker/boot2docker.git
-..
-$> cd boot2docker
-$> docker build -t boot2docker . && docker run --rm boot2docker > boot2docker.iso
-# takes a really long time..
-$> boot2docker down
-$> mv ~/.boot2docker/boot2docker.iso ~/.boot2docker/boot2docker.iso_old
-$> cp ./boot2docker.iso  ~/.boot2docker/boot2docker.iso
-$> boot2docker up
-$> boot2docker ssh
-docker@boot2docker:~$ ulimit -n 8192
-docker@boot2docker:~$ exit
+ boot2docker down
+ boot2docker update
+ boot2docker up
 ```
-
-
 
 ##TODO:
 * Centralized monitoring? [Ganglia?](http://ganglia.sourceforge.net/)
