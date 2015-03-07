@@ -42,7 +42,7 @@ This is solved in [boot2docker 1.2 pull 166](https://github.com/boot2docker/boot
 
 ```
  boot2docker down
- boot2docker update
+ boot2docker upgrade
  boot2docker up
 ```
 
